@@ -48,7 +48,7 @@ puts "Teacher age: #{teacher.age}"
 puts "Teacher ID: #{teacher.id}"
 puts "Teacher specialization: #{teacher.specialization}"
 puts "Can teacher use services?: #{teacher.can_use_services?}"
-puts 
+puts
 
 # Test Person class
 person = Person.new(22, name: 'maximilianus')
