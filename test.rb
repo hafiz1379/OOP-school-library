@@ -20,7 +20,8 @@ puts "Can person use services?: #{person.can_use_services?}"
 puts
 
 # Create a new student
-student = Student.new(16, 'Biology')
+classroom_biology = Classroom.new('Biology')  # Create a classroom instance
+student = Student.new(16, classroom_biology, name: 'Mahmood Azizi', parent_permission: true)
 
 # Test the setters
 student.name = 'Mahmood Azizi'
@@ -70,12 +71,17 @@ classroom_a = Classroom.new('Class A')
 classroom_b = Classroom.new('Class B')
 
 # Creating students with age, classroom, name, and parent_permission
-student1 = Student.new(18, classroom_a, name: 'John', parent_permission: true)
-student2 = Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
+Student.new(18, classroom_a, name: 'John', parent_permission: true)
+Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
 
-# Add students to classrooms
-classroom_a.add_student(student1)
-classroom_b.add_student(student2)
+# Create classrooms and students
+classroom_a = Classroom.new('Class A')
+classroom_b = Classroom.new('Class B')
+
+# Creating students with age, classroom, name, and parent_permission
+Student.new(18, classroom_a, name: 'John', parent_permission: true)
+Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
+
 
 # Create books and people
 book1 = Book.new('Book 1', 'Author 1')
