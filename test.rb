@@ -82,7 +82,6 @@ classroom_b = Classroom.new('Class B')
 Student.new(18, classroom_a, name: 'John', parent_permission: true)
 Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
 
-
 # Create books and people
 book1 = Book.new('Book 1', 'Author 1')
 book2 = Book.new('Book 2', 'Author 2')
