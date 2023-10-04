@@ -20,7 +20,7 @@ puts "Can person use services?: #{person.can_use_services?}"
 puts
 
 # Create a new student
-classroom_biology = Classroom.new('Biology')  # Create a classroom instance
+classroom_biology = Classroom.new('Biology') # Create a classroom instance
 student = Student.new(16, classroom_biology, name: 'Mahmood Azizi', parent_permission: true)
 
 # Test the setters
