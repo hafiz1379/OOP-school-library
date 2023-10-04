@@ -5,18 +5,21 @@ class Student < Person
 
   def initialize(age, classroom, parent_permission: true, name: 'Unknown')
     super(age, parent_permission: parent_permission, name: name)
-    @classroom = classroom
-    classroom&.add_student(self)
+    assign_classroom(classroom)
   end
 
-  # rubocop:disable Naming/AccessorMethodName
   # Add a method to get the classroom to which the student belongs.
   def get_classroom
     @classroom
   end
-  # rubocop:enable Naming/AccessorMethodName
 
   def play_hooky
     '¯\(ツ)/¯'
+  end
+
+  # Method to assign a classroom to the student and add the student to the classroom's list.
+  def assign_classroom(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
