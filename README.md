@@ -82,51 +82,51 @@ Example command:
 
 Clone this repository to your desired folder:
 
-<!--
-Example commands:
+
+### Prerequisites
+
+In order to run this project you need:
+
+- Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+- Create a repo on your repositores files.
+- Clone or make a copy of this repo on your local machine.
+- Follow GitHub flow.
+- A carefully reading of this README.md is required.
+
+### Setup
+
+Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/hafiz1379/OOP_school_library
 ```
---->
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
-
 ```sh
-  cd my-project
-  gem install
+  bundle install
 ```
---->
 
 ### Usage
 
-To run the project, execute the following command:
-
-<!--
-Example command:
+To run the project, run the following command:
 
 ```sh
-  rails server
+  ruby test.rb
 ```
---->
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
 ```
---->
+rubocop
+```
+
+<!--
 
 ### Deployment
 
