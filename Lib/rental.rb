@@ -1,3 +1,4 @@
+# this class represents the rental
 class Rental
   attr_accessor :date, :book, :person
 
