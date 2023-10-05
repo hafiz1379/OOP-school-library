@@ -1,5 +1,7 @@
+# This class is for the classroom
 class Classroom
-  attr_accessor :label, :students
+  attr_accessor :label
+  attr_reader :students
 
   def initialize(label)
     @label = label
