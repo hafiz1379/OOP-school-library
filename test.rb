@@ -6,7 +6,7 @@ require_relative 'lib/classroom'
 require_relative 'lib/book'
 require_relative 'lib/rental'
 # Create a new person
-person = Person.new(30, name: 'Omid Fakheri')
+person = Person.new('Omid Fakheri', 30)
 
 # Test the setters
 person.name = 'Omid Fakheri'
@@ -21,7 +21,7 @@ puts
 
 # Create a new student
 classroom_biology = Classroom.new('Biology') # Create a classroom instance
-student = Student.new(16, classroom_biology, name: 'Mahmood Azizi', parent_permission: true)
+student = Student.new('Mahmood Azizi', 16, classroom_biology, parent_permission: true)
 
 # Test the setters
 student.name = 'Mahmood Azizi'
@@ -38,7 +38,7 @@ puts "Student played hooky: #{student.play_hooky}"
 puts
 
 # Create a new teacher
-teacher = Teacher.new(35, 'Mathematics')
+teacher = Teacher.new('Mr. Rahimi', 32, 'Mathematics', parent_permission: true)
 
 # Test the setters
 teacher.name = 'Mr. Rahimi'
@@ -54,7 +54,7 @@ puts "Can teacher use services?: #{teacher.can_use_services?}"
 puts
 
 # Test Person class
-person = Person.new(22, name: 'maximilianus')
+person = Person.new('maximilianus', 22)
 puts "Person's correct name: #{person.correct_name}"
 
 # Test CapitalizeDecorator
@@ -71,23 +71,31 @@ classroom_a = Classroom.new('Class A')
 classroom_b = Classroom.new('Class B')
 
 # Creating students with age, classroom, name, and parent_permission
-Student.new(18, classroom_a, name: 'John', parent_permission: true)
-Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
+Student.new('John', 18, classroom_a, parent_permission: true)
+Student.new('Jane', 17, classroom_b, parent_permission: false)
 
 # Create classrooms and students
 classroom_a = Classroom.new('Class A')
 classroom_b = Classroom.new('Class B')
 
 # Creating students with age, classroom, name, and parent_permission
-Student.new(18, classroom_a, name: 'John', parent_permission: true)
-Student.new(17, classroom_b, name: 'Jane', parent_permission: false)
+Student.new('John Doe', 18, classroom_a, parent_permission: true)
+Student.new('Jane Smith', 17, classroom_b, parent_permission: false)
+
+# Create classrooms and students (Unique names and ages)
+classroom_c = Classroom.new('Class C')
+classroom_d = Classroom.new('Class D')
+
+# Creating students with age, classroom, name, and parent_permission (Unique names and ages)
+Student.new('Alice Johnson', 18, classroom_c, parent_permission: true)
+Student.new('Bob Williams', 17, classroom_d, parent_permission: false)
 
 # Create books and people
 book1 = Book.new('Book 1', 'Author 1')
 book2 = Book.new('Book 2', 'Author 2')
 
-person1 = Person.new(1, name: 'Person 1')
-person2 = Person.new(2, name: 'Person 2')
+person1 = Person.new('Person 1', 30)
+person2 = Person.new('Person 2', 25)
 
 # Create rentals
 Rental.new('2023-07-24', book1, person1)
