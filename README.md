@@ -150,11 +150,6 @@ Example:
 - Twitter: [@twitterhandle](https://twitter.com/Hafizrasa1379?s=35)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/hafizullah-rasa-8436a1257/)
 
-👤 **Derek Akrasi Konadu**
-
- **GitHub**  | [@githubhandle](https://github.com/obibaadoma)
-**Twitter**: [@twitterhandle](https://twitter.com/obibakwekuadoma)
-**LinkedIn**: [LinkedIn](https://linkedin.com/in/derek-akrasi-konadu)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
