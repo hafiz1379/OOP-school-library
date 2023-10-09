@@ -1,4 +1,33 @@
 require_relative 'app'
+
+class InputCollector
+  def self.get_input(prompt)
+    print "#{prompt}: "
+    gets.chomp
+  end
+
+  def self.get_integer_input(prompt)
+    loop do
+      input = get_input(prompt)
+      return input.to_i if input.match?(/^\d+$/)
+
+      puts 'Invalid input. Please enter a valid integer.'
+    end
+  end
+end
+
+class StudentInputValidator
+  def self.validate(_name, _age)
+    true
+  end
+end
+
+class TeacherInputValidator
+  def self.validate(_name, _subject)
+    true
+  end
+end
+
 class AppInterface
   ACTIONS = {
     1 => :list_books,
@@ -9,6 +38,7 @@ class AppInterface
     6 => :list_rentals_for_person,
     7 => :exit_app
   }.freeze
+
   def initialize(app)
     @app = app
   end
@@ -23,8 +53,7 @@ class AppInterface
   def display_menu
     puts "\nPlease choose an option:"
     ACTIONS.each { |key, value| puts "#{key} - #{value.to_s.tr('_', ' ')}" }
-    print 'Option: '
-    gets.chomp.to_i
+    InputCollector.get_integer_input('Option')
   end
 
   def handle_option(option)
@@ -33,6 +62,43 @@ class AppInterface
       @app.send(action)
     else
       puts 'Invalid option. Please try again.'
+    end
+  end
+
+  def create_person
+    puts '1 - Create Student'
+    puts '2 - Create Teacher'
+    type = InputCollector.get_integer_input('Select person type (1 for Student, 2 for Teacher)')
+
+    case type
+    when 1
+      create_student
+    when 2
+      create_teacher
+    else
+      puts 'Invalid person type.'
+    end
+  end
+
+  def create_student
+    name = InputCollector.get_input('Enter student name')
+    age = InputCollector.get_integer_input('Enter student age')
+
+    if StudentInputValidator.validate(name, age)
+      puts 'Student created successfully.'
+    else
+      puts 'Invalid input for creating a student.'
+    end
+  end
+
+  def create_teacher
+    name = InputCollector.get_input('Enter teacher name')
+    subject = InputCollector.get_input('Enter teacher subject')
+
+    if TeacherInputValidator.validate(name, subject)
+      puts 'Teacher created successfully.'
+    else
+      puts 'Invalid input for creating a teacher.'
     end
   end
 end
