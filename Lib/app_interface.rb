@@ -18,13 +18,41 @@ end
 
 class StudentInputValidator
   def self.validate(_name, _age)
+    # Add your validation logic here
     true
   end
 end
 
 class TeacherInputValidator
   def self.validate(_name, _subject)
+    # Add your validation logic here
     true
+  end
+end
+
+class PersonFactory
+  def self.create_student
+    name = InputCollector.get_input('Enter student name')
+    age = InputCollector.get_integer_input('Enter student age')
+
+    if StudentInputValidator.validate(name, age)
+      # Create the student object and add it to your application
+      puts 'Student created successfully.'
+    else
+      puts 'Invalid input for creating a student.'
+    end
+  end
+
+  def self.create_teacher
+    name = InputCollector.get_input('Enter teacher name')
+    subject = InputCollector.get_input('Enter teacher subject')
+
+    if TeacherInputValidator.validate(name, subject)
+      # Create the teacher object and add it to your application
+      puts 'Teacher created successfully.'
+    else
+      puts 'Invalid input for creating a teacher.'
+    end
   end
 end
 
@@ -72,33 +100,11 @@ class AppInterface
 
     case type
     when 1
-      create_student
+      PersonFactory.create_student
     when 2
-      create_teacher
+      PersonFactory.create_teacher
     else
       puts 'Invalid person type.'
-    end
-  end
-
-  def create_student
-    name = InputCollector.get_input('Enter student name')
-    age = InputCollector.get_integer_input('Enter student age')
-
-    if StudentInputValidator.validate(name, age)
-      puts 'Student created successfully.'
-    else
-      puts 'Invalid input for creating a student.'
-    end
-  end
-
-  def create_teacher
-    name = InputCollector.get_input('Enter teacher name')
-    subject = InputCollector.get_input('Enter teacher subject')
-
-    if TeacherInputValidator.validate(name, subject)
-      puts 'Teacher created successfully.'
-    else
-      puts 'Invalid input for creating a teacher.'
     end
   end
 end
