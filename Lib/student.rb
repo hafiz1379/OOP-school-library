@@ -9,6 +9,13 @@ class Student < Person
     self.classroom = classroom
   end
 
+  # Método to_h agregado
+  def to_h
+    super.merge({
+                  classroom: @classroom.label # Cambiado para evitar la recursividad
+                })
+  end
+
   def play_hooky
     '¯\(ツ)/¯'
   end
