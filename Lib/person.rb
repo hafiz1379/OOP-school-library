@@ -5,8 +5,8 @@ class Nameable
 end
 
 class Person < Nameable
-  attr_accessor :name, :age, :rentals
-  attr_reader :id
+  attr_accessor :name, :age, :rentals, :id
+  attr_reader :classroom
 
   def initialize(name, age, parent_permission: true)
     super()
@@ -27,6 +27,16 @@ class Person < Nameable
 
   def link_rental(rental)
     @rentals << rental
+  end
+
+  # Método to_h agregado
+  def to_h
+    {
+      'id' => @id,
+      'name' => @name,
+      'age' => @age,
+      'parent_permission' => @parent_permission
+    }
   end
 
   private
