@@ -1,5 +1,5 @@
 require 'json'
-require 'fileutils' # Línea agregada: para crear la carpeta
+require 'fileutils'
 require_relative 'book'
 require_relative 'person'
 require_relative 'student'
@@ -11,11 +11,11 @@ class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    FileUtils.mkdir_p('./data') # Línea agregada: crea la carpeta 'data' si no existe
+    FileUtils.mkdir_p('./data')
     @books = []
     @people = []
     @rentals = []
-    load_from_files # Línea agregada: carga datos al iniciar la app
+    load_from_files
   end
 
   def list_books
@@ -23,9 +23,7 @@ class App
   end
 
   def list_people
-    @people.each do |person|
-      puts "[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
+    @people.each { |person| puts "#{person.class}: Name: #{person.name}, Id: #{person.id}, Age: #{person.age}" }
   end
 
   def create_person
@@ -89,32 +87,20 @@ class App
 
   def create_rental
     puts 'Select a book from the following list by number:'
-    list_books_with_index
+    @books.each_with_index { |book, index| puts "#{index}) #{book.title}" }
 
     book_index = gets.chomp.to_i
 
     puts 'Select a person from the following list by number:'
-    list_people_with_index
+    @people.each_with_index { |person, index| puts "#{index}) #{person.name}" }
 
     person_index = gets.chomp.to_i
 
-    print 'Date (YYYY/MM/DD): '
+    print 'Date: '
     date = gets.chomp
 
     @rentals << Rental.new(date, @books[book_index], @people[person_index])
     puts 'Rental created successfully'
-  end
-
-  def list_books_with_index
-    @books.each_with_index do |book, index|
-      puts "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\""
-    end
-  end
-
-  def list_people_with_index
-    @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
   end
 
   def list_rentals_for_person
@@ -139,7 +125,7 @@ class App
     exit
   end
 
-  # Nuevas funciones agregadas para manejar JSON
+  # Add new functions to handle JSON
   def save_to_files
     File.write('./data/books.json', JSON.dump(@books.map(&:to_h)))
     File.write('./data/people.json', JSON.dump(@people.map(&:to_h)))
