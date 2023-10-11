@@ -1,6 +1,5 @@
-require_relative 'Lib/app'
-require_relative 'Lib/app_interface'
-
+require_relative 'app'
+require_relative 'app_interface'
 def main
   app = App.new
   app.load_from_files
