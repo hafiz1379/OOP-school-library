@@ -1,23 +1,15 @@
-# Base Decorator class
-require_relative 'person'
+require_relative 'nameable'
 
+# This calss represent the decorator
 class Decorator < Nameable
+  attr_accessor :nameable
+
   def initialize(nameable)
     super()
     @nameable = nameable
   end
-end
 
-# CapitalizeDecorator class
-class CapitalizeDecorator < Decorator
   def correct_name
-    @nameable.correct_name.capitalize
-  end
-end
-
-# TrimmerDecorator class
-class TrimmerDecorator < Decorator
-  def correct_name
-    @nameable.correct_name[0..9]
+    @nameable.correct_name
   end
 end

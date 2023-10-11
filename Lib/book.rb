@@ -1,4 +1,3 @@
-# this class represents the books
 class Book
   attr_accessor :title, :author, :rentals
 
